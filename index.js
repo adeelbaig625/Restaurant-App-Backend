@@ -5,7 +5,7 @@ const passport = require("passport");
 const port = 3000;
 const User = require("./Model/User");
 const UserRoutes = require("./Routes/User");
-
+const ErrorHandler = require("./Middleware/ErrorHandler");
 app.use(express.json());
 app.use(passport.initialize());
 require("./config/passport")(passport);
@@ -13,7 +13,7 @@ app.get("/", passport.authenticate("jwt", { session: false }), (req, res) => {
   console.log(req.user);
   res.send("Hello World!");
 });
-
+app.use(ErrorHandler);
 app.use("/", UserRoutes);
 connectDB().then(() => {
   app.listen(port, () => {
