@@ -9,12 +9,14 @@ const ErrorHandler = require("./Middleware/ErrorHandler");
 app.use(express.json());
 app.use(passport.initialize());
 require("./config/passport")(passport);
+
 app.get("/", passport.authenticate("jwt", { session: false }), (req, res) => {
   console.log(req.user);
   res.send("Hello World!");
 });
-app.use(ErrorHandler);
+
 app.use("/", UserRoutes);
+app.use(ErrorHandler);
 connectDB().then(() => {
   app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);

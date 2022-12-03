@@ -1,4 +1,5 @@
 const User = require("../Model/User");
+const AppError = require("../AppError");
 class UserController {
   signup = async (req, res, next) => {
     try {
@@ -8,16 +9,15 @@ class UserController {
         email,
         password,
       });
-      const err = user.validateSync();
-      if (err) {
-        res.status(400);
-        next(err);
+      const validateError = user.validateSync();
+      if (validateError) {
+        next(AppError.badRequest(validateError.message));
       }
       const userData = await user.save();
       const userToken = await user.getSignedJwtToken();
       return res.status(200).send({ userData, userToken });
     } catch (err) {
-      return res.status(500).send({ err: err?.message });
+      next(err);
     }
   };
 }
