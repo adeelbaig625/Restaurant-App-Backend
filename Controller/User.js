@@ -13,9 +13,27 @@ class UserController {
       if (validateError) {
         next(AppError.badRequest(validateError.message));
       }
-      const userData = await user.save();
+      return res.status(200).json({ success: true });
+    } catch (err) {
+      next(err);
+    }
+  };
+  login = async (req, res, next) => {
+    try {
+      const { email, password } = req.body;
+      if (!email || !password) {
+        next(AppError.badRequest("Please provide email and password"));
+      }
+      const user = await User.findOne({ email }).select("+password");
+      if (!user) {
+        next(AppError.unauthorized("Invalid credentials"));
+      }
+      const isMatch = await user.matchPassword(password);
+      if (!isMatch) {
+        next(AppError.unauthorized("Invalid credentials"));
+      }
       const userToken = await user.getSignedJwtToken();
-      return res.status(200).send({ userData, userToken });
+      return res.status(200).send({ user, userToken });
     } catch (err) {
       next(err);
     }

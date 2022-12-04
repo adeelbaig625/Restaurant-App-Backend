@@ -8,6 +8,10 @@ class AppError {
     return new AppError(400, msg);
   }
 
+  static unauthorized(msg) {
+    return new AppError(401, msg);
+  }
+
   static internal(msg) {
     return new AppError(500, msg);
   }
