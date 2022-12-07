@@ -3,8 +3,13 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const config = require("config");
 const UserSchema = new mongoose.Schema({
+  _id: {
+    type: Number,
+    default: 0,
+  },
   name: {
     type: String,
+    trim: true,
     required: [true, "Please add a name"],
   },
   email: {
@@ -31,7 +36,12 @@ UserSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
     next();
   }
-
+  if (this.isNew) {
+    const UserModel = mongoose.model("User", UserSchema);
+    UserModel.count().then((count) => {
+      this._id = this.name + (count + 1);
+    });
+  }
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
 });
