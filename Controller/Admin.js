@@ -13,7 +13,7 @@ class AdminController {
       if (validateError) {
         next(AppError.badRequest(validateError.message));
       }
-      await user.save();
+      await admin.save();
       return res.status(200).json({ success: true });
     } catch (err) {
       next(err);
@@ -26,7 +26,7 @@ class AdminController {
         next(AppError.badRequest("Please provide email and password"));
       }
       const admin = await Admin.findOne({ email }).select("+password");
-      if (!user) {
+      if (!admin) {
         next(AppError.unauthorized("Invalid credentials"));
       }
       const isMatch = await admin.matchPassword(password);
@@ -35,17 +35,18 @@ class AdminController {
       }
       const adminToken = await admin.getSignedJwtToken(true);
       admin.password = undefined;
-      return res.status(200).send({ admin, adinToken });
+      return res.status(200).send({ admin, adminToken });
     } catch (err) {
       next(err);
     }
   };
   profile = async (req, res, next) => {
     try {
+      console.log(req.user);
       return res.status(200).send(req.user);
     } catch (err) {
       next(err);
     }
   };
 }
-module.exports = new UserController();
+module.exports = new AdminController();

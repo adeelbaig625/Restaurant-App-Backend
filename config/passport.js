@@ -13,25 +13,21 @@ module.exports = (passport) => {
   passport.use(
     new JwtStrategy(opts, (jwt_payload, done) => {
       if (jwt_payload.isAdmin) {
-        Admin.findById(jwt_payload.id)
-          .then((user) => {
-            if (user) {
-              return done(null, user);
-            }
-            return done(null, false);
-          })
-          .catch((err) => {
-            return done("Unauthorized", false);
-          });
-      }
-      User.findById(jwt_payload.id)
-        .then((user) => {
+        console.log(jwt_payload);
+        Admin.findById(jwt_payload.id).then((user) => {
           if (user) {
             return done(null, user);
           }
           return done(null, false);
-        })
-        .catch((err) => done("Unauthorized", false));
+        });
+      } else {
+        User.findById(jwt_payload.id).then((user) => {
+          if (user) {
+            return done(null, user);
+          }
+          return done(null, false);
+        });
+      }
     })
   );
 };
