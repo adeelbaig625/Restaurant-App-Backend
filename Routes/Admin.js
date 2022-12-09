@@ -8,4 +8,9 @@ router.get(
   passport.authenticate("jwt", { session: false }),
   AdminController.profile
 );
+router.post(
+  "/AddProduct",
+  passport.authenticate("jwt", { session: false }),
+  AdminController.AddProduct
+);
 module.exports = router;
