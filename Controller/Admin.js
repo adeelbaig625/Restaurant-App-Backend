@@ -20,6 +20,33 @@ class AdminController {
       next(err);
     }
   };
+  update = async (req, res, next) => {
+    try {
+      let obj = req.body;
+      delete obj.password;
+      const updateAdmin = await Admin.findByIdAndUpdate(req.user._id, obj, {
+        new: true,
+      });
+      return res.status(200).json({ success: true, updateAdmin });
+    } catch (err) {
+      next(err);
+    }
+  };
+
+  updatePassword = async (req, res, next) => {
+    try {
+      const { oldPassword, newPassword } = req.body;
+      const admin = await Admin.findById(req.user._id).select("+password");
+      if (!(await admin.matchPassword(oldPassword))) {
+        next(AppError.unauthorized("Invalid credentials"));
+      }
+      admin.password = newPassword;
+      await admin.save();
+      return res.status(200).json({ success: true });
+    } catch (err) {
+      next(err);
+    }
+  };
   login = async (req, res, next) => {
     try {
       const { email, password } = req.body;
@@ -64,6 +91,20 @@ class AdminController {
       }
       await product.save();
       return res.status(200).json({ success: true });
+    } catch (err) {
+      next(err);
+    }
+  };
+
+  UpdateProduct = async (req, res, next) => {
+    try {
+      let obj = req.body;
+      const updateProduct = await Product.findByIdAndUpdate(
+        req.params.id,
+        obj,
+        { new: true, upsert: true }
+      );
+      return res.status(200).json({ success: true, updateProduct });
     } catch (err) {
       next(err);
     }
