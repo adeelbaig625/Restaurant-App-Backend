@@ -23,4 +23,10 @@ router.post(
   passport.authenticate("jwt", { session: false }),
   AdminController.AddProduct
 );
+router.put(
+  "/UpdateProduct/:id",
+  passport.authenticate("jwt", { session: false }),
+  AdminController.UpdateProduct
+);
+
 module.exports = router;

@@ -99,6 +99,9 @@ class AdminController {
   UpdateProduct = async (req, res, next) => {
     try {
       let obj = req.body;
+      if (Object.keys(obj).length === 0) {
+        return next(AppError.badRequest("Please provide data to update"));
+      }
       const updateProduct = await Product.findByIdAndUpdate(
         req.params.id,
         obj,
@@ -106,7 +109,7 @@ class AdminController {
       );
       return res.status(200).json({ success: true, updateProduct });
     } catch (err) {
-      next(err);
+      return next(err);
     }
   };
 }
