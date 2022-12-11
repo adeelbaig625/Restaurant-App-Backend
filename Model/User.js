@@ -4,10 +4,6 @@ const jwt = require("jsonwebtoken");
 const config = require("config");
 const UserSchema = new mongoose.Schema(
   {
-    _id: {
-      type: Number,
-      default: 0,
-    },
     name: {
       type: String,
       trim: true,
@@ -27,14 +23,6 @@ const UserSchema = new mongoose.Schema(
       required: [true, "Please add a password"],
       minlength: 6,
       select: false,
-    },
-    date: {
-      type: Date,
-      default: Date.now,
-    },
-    isAdmin: {
-      type: String,
-      default: true,
     },
   },
   { timestamps: true }
