@@ -14,4 +14,14 @@ router.post(
   passport.authenticate("jwt", { session: false }),
   CartController.addItemtoCart
 );
+router.get(
+  "/cart",
+  passport.authenticate("jwt", { session: false }),
+  CartController.getCart
+);
+router.post(
+  "/emptyCart",
+  passport.authenticate("jwt", { session: false }),
+  CartController.emptyCart
+);
 module.exports = router;

@@ -82,5 +82,32 @@ class CartController {
       next(err);
     }
   };
+
+  getCart = async (req, res, next) => {
+    try {
+      let cart = await this.cart(req.user._id);
+      if (!cart) {
+        return res.status(200).json({ success: true, cart: {} });
+      }
+      return res.status(200).json({ success: true, cart });
+    } catch (err) {
+      return next(err);
+    }
+  };
+
+  emptyCart = async (req, res, next) => {
+    try {
+      let cart = await this.cart(req.user._id);
+      if (!cart) {
+        return res.status(200).json({ success: true, cart: {} });
+      }
+      cart.items = [];
+      cart.subTotal = 0;
+      await cart.save();
+      return res.status(200).json({ success: true, cart: {} });
+    } catch (err) {
+      return next(err);
+    }
+  };
 }
 module.exports = new CartController();
