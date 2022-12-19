@@ -7,7 +7,10 @@ class OrderController {
   addOrderToUser = async (req, res, next) => {
     const { cartId } = req.body;
     try {
-      let cartDetails = await Cart.findById(cartId).populate({
+      let cartDetails = await Cart.findOne({
+        _id: cartId,
+        user: req.user._id,
+      }).populate({
         path: "items.productId",
         select: "name price total",
       });

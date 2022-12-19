@@ -2,6 +2,7 @@ const router = require("express").Router();
 const passport = require("passport");
 const UserController = require("../Controller/User");
 const CartController = require("../Controller/Cart");
+const OrderController = require("../Controller/Order");
 router.post("/Signup", UserController.signup);
 router.post("/Login", UserController.login);
 router.get(
@@ -23,5 +24,10 @@ router.post(
   "/emptyCart",
   passport.authenticate("jwt", { session: false }),
   CartController.emptyCart
+);
+router.post(
+  "/addOrder",
+  passport.authenticate("jwt", { session: false }),
+  OrderController.addOrderToUser
 );
 module.exports = router;
