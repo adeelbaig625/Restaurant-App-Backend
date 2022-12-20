@@ -30,4 +30,9 @@ router.post(
   passport.authenticate("jwt", { session: false }),
   OrderController.addOrderToUser
 );
+router.get(
+  "/getOrders",
+  passport.authenticate("jwt", { session: false }),
+  OrderController.getOrders
+);
 module.exports = router;

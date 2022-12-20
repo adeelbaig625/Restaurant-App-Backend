@@ -36,5 +36,14 @@ class OrderController {
       next(err);
     }
   };
+
+  getOrders = async (req, res, next) => {
+    try {
+      const orders = await Order.find({ user: req.user._id });
+      return res.status(200).json({ success: true, orders });
+    } catch (err) {
+      next(err);
+    }
+  };
 }
 module.exports = new OrderController();
