@@ -45,5 +45,21 @@ class OrderController {
       next(err);
     }
   };
+  updateOrderStatus = async (req, res, next) => {
+    const { orderId, status } = req.body;
+    try {
+      let order = await Order.findOneAndUpdate(
+        { _id: orderId, user: req.user._id },
+        { orderStatus: status },
+        { new: true }
+      );
+      if (!order) {
+        return next(AppError.badRequest("Order not found"));
+      }
+      return res.status(200).json({ success: true, order });
+    } catch (err) {
+      next(err);
+    }
+  };
 }
 module.exports = new OrderController();
