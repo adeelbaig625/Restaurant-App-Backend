@@ -10,6 +10,11 @@ router.get(
   passport.authenticate("jwt", { session: false }),
   UserController.profile
 );
+router.put(
+  "/UpdatePassword",
+  passport.authenticate("jwt", { session: false }),
+  UserController.updatePassword
+);
 router.post(
   "/AddToCart",
   passport.authenticate("jwt", { session: false }),

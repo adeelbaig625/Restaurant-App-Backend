@@ -40,6 +40,20 @@ class UserController {
       next(err);
     }
   };
+  updatePassword = async (req, res, next) => {
+    try {
+      const { oldPassword, newPassword } = req.body;
+      const user = await User.findById(req.user._id).select("+password");
+      if (!(await user.matchPassword(oldPassword))) {
+        return next(AppError.unauthorized("Invalid credentials"));
+      }
+      user.password = newPassword;
+      await user.save();
+      return res.status(200).json({ success: true });
+    } catch (err) {
+      next(err);
+    }
+  };
   profile = async (req, res, next) => {
     try {
       return res.status(200).send(req.user);
