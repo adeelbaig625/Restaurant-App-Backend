@@ -40,4 +40,5 @@ router.get(
   passport.authenticate("jwt", { session: false }),
   OrderController.getOrders
 );
+router.get("/SendEmail", UserController.sendEmail);
 module.exports = router;

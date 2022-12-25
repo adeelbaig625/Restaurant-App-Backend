@@ -1,5 +1,6 @@
 const User = require("../Model/User");
 const AppError = require("../AppError");
+const { sendEmail } = require("../utils/sendEmail");
 class UserController {
   signup = async (req, res, next) => {
     try {
@@ -61,5 +62,44 @@ class UserController {
       next(err);
     }
   };
+  sendEmail = async (req, res, next) => {
+    try {
+      const send = await sendEmail("adeelbaig625@gmail.com", "dasda", "dasdda");
+      return res.status(200).send("Email sent");
+    } catch (err) {
+      next(err);
+    }
+  };
+  // sendResestPasswordEmail = async (req, res, next) => {
+  //   try {
+  //     const { email } = req.body;
+  //     const user = await User.findOne({ email });
+  //     if (!user) {
+  //       return next(AppError.notFound("User not found"));
+  //     }
+  //     const resetToken = await user.getResetPasswordToken();
+  //     await user.save();
+  //     const resetUrl = `${req.protocol}://${req.get(
+  //       "host"
+  //     )}/api/user/resetpassword/${resetToken}`;
+  //     const message = `You are receiving this email because you (or someone else) has requested the reset of a password. Please make a PUT request to: \n\n ${resetUrl}`;
+  //     try {
+  //       await sendEmail({
+  //         email: user.email,
+  //         subject: "Password reset token",
+  //         message,
+  //       });
+  //       res.status(200).json({ success: true, data: "Email sent" });
+  //     } catch (err) {
+  //       console.log(err);
+  //       user.resetPasswordToken = undefined;
+  //       user.resetPasswordExpire = undefined;
+  //       await user.save();
+  //       return next(AppError.serverError("Email could not be sent"));
+  //     }
+  //   } catch (err) {
+  //     next(err);
+  //   }
+  // };
 }
 module.exports = new UserController();

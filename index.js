@@ -10,7 +10,7 @@ const ErrorHandler = require("./Middleware/ErrorHandler");
 app.use(express.json());
 app.use(passport.initialize());
 require("./config/passport")(passport);
-
+require("dotenv").config();
 app.use("/", UserRoutes);
 app.use("/Admin", AdminRoutes);
 app.use(ErrorHandler);
