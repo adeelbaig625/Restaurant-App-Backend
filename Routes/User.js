@@ -41,4 +41,7 @@ router.get(
   OrderController.getOrders
 );
 router.get("/SendEmail", UserController.sendEmail);
+router.post("/ResetPasswordEmail", UserController.sendResetPasswordEmail);
+router.post("/ResetPassword/:userId/:token", UserController.resetPassword);
+
 module.exports = router;

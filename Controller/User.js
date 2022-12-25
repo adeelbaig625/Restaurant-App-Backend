@@ -1,6 +1,7 @@
 const User = require("../Model/User");
 const AppError = require("../AppError");
 const { sendEmail } = require("../utils/sendEmail");
+const Token = require("../Model/Token");
 class UserController {
   signup = async (req, res, next) => {
     try {
@@ -70,36 +71,59 @@ class UserController {
       next(err);
     }
   };
-  // sendResestPasswordEmail = async (req, res, next) => {
-  //   try {
-  //     const { email } = req.body;
-  //     const user = await User.findOne({ email });
-  //     if (!user) {
-  //       return next(AppError.notFound("User not found"));
-  //     }
-  //     const resetToken = await user.getResetPasswordToken();
-  //     await user.save();
-  //     const resetUrl = `${req.protocol}://${req.get(
-  //       "host"
-  //     )}/api/user/resetpassword/${resetToken}`;
-  //     const message = `You are receiving this email because you (or someone else) has requested the reset of a password. Please make a PUT request to: \n\n ${resetUrl}`;
-  //     try {
-  //       await sendEmail({
-  //         email: user.email,
-  //         subject: "Password reset token",
-  //         message,
-  //       });
-  //       res.status(200).json({ success: true, data: "Email sent" });
-  //     } catch (err) {
-  //       console.log(err);
-  //       user.resetPasswordToken = undefined;
-  //       user.resetPasswordExpire = undefined;
-  //       await user.save();
-  //       return next(AppError.serverError("Email could not be sent"));
-  //     }
-  //   } catch (err) {
-  //     next(err);
-  //   }
-  // };
+  sendResetPasswordEmail = async (req, res, next) => {
+    try {
+      const { email } = req.body;
+      const user = await User.findOne({ email });
+      if (!user) {
+        return next(AppError.notFound("User not found"));
+      }
+      let token = await Token.findOne({ userId: user._id });
+      if (!token) {
+        token = await new Token({
+          userId: user._id,
+          token: crypto.randomBytes(32).toString("hex"),
+        }).save();
+      }
+      const link = `${process.env.BASE_URL}/resetpassword/${user._id}/${token.token}`;
+      const message = `You are receiving this email because you (or someone else) has requested the reset of a password. Please make a PUT request to: \n\n ${link}`;
+      try {
+        await sendEmail({
+          email: user.email,
+          subject: "Password reset token",
+          message,
+        });
+        res.status(200).json({ success: true, data: "Email sent" });
+      } catch (err) {
+        console.log(err);
+        user.resetPasswordToken = undefined;
+        user.resetPasswordExpire = undefined;
+        await user.save();
+        return next(AppError.serverError("Email could not be sent"));
+      }
+    } catch (err) {
+      next(err);
+    }
+  };
+  resetPassword = async (req, res, next) => {
+    try {
+      const { password } = req.body;
+      const { userId, token } = req.params;
+      const user = await User.findById(userId);
+      if (!user) {
+        return next(AppError.notFound("User not found"));
+      }
+      const resetToken = await Token.findOne({ user: userId, token });
+      if (!resetToken) {
+        return next(AppError.notFound("Token not found"));
+      }
+      user.password = password;
+      await user.save();
+      await resetToken.remove();
+      return res.status(200).json({ success: true, data: "Password reset" });
+    } catch (err) {
+      next(err);
+    }
+  };
 }
 module.exports = new UserController();
