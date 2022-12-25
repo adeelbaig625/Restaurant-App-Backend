@@ -1,6 +1,7 @@
 const User = require("../Model/User");
 const AppError = require("../AppError");
 const { sendEmail } = require("../utils/sendEmail");
+const crypto = require("crypto");
 const Token = require("../Model/Token");
 class UserController {
   signup = async (req, res, next) => {
@@ -74,25 +75,23 @@ class UserController {
   sendResetPasswordEmail = async (req, res, next) => {
     try {
       const { email } = req.body;
+      console.log(email);
       const user = await User.findOne({ email });
       if (!user) {
-        return next(AppError.notFound("User not found"));
+        return next(AppError.unauthorized("User not found"));
       }
-      let token = await Token.findOne({ userId: user._id });
+      let token = await Token.findOne({ user: user._id });
+
       if (!token) {
         token = await new Token({
-          userId: user._id,
+          user: user._id,
           token: crypto.randomBytes(32).toString("hex"),
         }).save();
       }
       const link = `${process.env.BASE_URL}/resetpassword/${user._id}/${token.token}`;
       const message = `You are receiving this email because you (or someone else) has requested the reset of a password. Please make a PUT request to: \n\n ${link}`;
       try {
-        await sendEmail({
-          email: user.email,
-          subject: "Password reset token",
-          message,
-        });
+        await sendEmail(email, "Password reset token", message);
         res.status(200).json({ success: true, data: "Email sent" });
       } catch (err) {
         console.log(err);
@@ -111,11 +110,12 @@ class UserController {
       const { userId, token } = req.params;
       const user = await User.findById(userId);
       if (!user) {
-        return next(AppError.notFound("User not found"));
+        return next(AppError.unauthorized("User not found"));
       }
-      const resetToken = await Token.findOne({ user: userId, token });
+      console.log(userId, token);
+      const resetToken = await Token.findOne({ token });
       if (!resetToken) {
-        return next(AppError.notFound("Token not found"));
+        return next(AppError.unauthorized("Token not found"));
       }
       user.password = password;
       await user.save();

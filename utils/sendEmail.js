@@ -3,7 +3,11 @@ const nodemailer = require("nodemailer");
 exports.sendEmail = async (email, subject, text) => {
   try {
     let testAccount = await nodemailer.createTestAccount();
-
+    console.log("Email: ", process.env.EMAIL);
+    console.log("Pass: ", process.env.PASS);
+    console.log("Email: ", email);
+    console.log("Subject: ", subject);
+    console.log("Text: ", text);
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
@@ -22,14 +26,7 @@ exports.sendEmail = async (email, subject, text) => {
       subject: subject, // Subject line
       text: text, // plain text body
     });
-
-    console.log("Message sent: %s", info.messageId);
-    // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
-
-    // Preview only available when sending through an Ethereal account
-
-    // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
   } catch (err) {
-    console.log(err);
+    throw err;
   }
 };
