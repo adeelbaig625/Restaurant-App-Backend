@@ -95,9 +95,6 @@ class UserController {
         res.status(200).json({ success: true, data: "Email sent" });
       } catch (err) {
         console.log(err);
-        user.resetPasswordToken = undefined;
-        user.resetPasswordExpire = undefined;
-        await user.save();
         return next(AppError.serverError("Email could not be sent"));
       }
     } catch (err) {
@@ -119,7 +116,7 @@ class UserController {
       }
       user.password = password;
       await user.save();
-      await resetToken.remove();
+      await resetToken.delete();
       return res.status(200).json({ success: true, data: "Password reset" });
     } catch (err) {
       next(err);
