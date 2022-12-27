@@ -418,13 +418,13 @@
 	],
 	"variable": [
 		{
-			"id": "70d3e2a8-d06d-436d-bc89-3e141f287172",
+			"id": "d8571c7f-d764-48eb-ad64-7c7fb041e38b",
 			"key": "bearer-token",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "e314cced-3cc3-4dd5-8d8d-b2ceb182c25c",
+			"id": "1370068a-9e78-4cc6-9eb4-e509f692c078",
 			"key": "localBasedUrl",
 			"value": "http://localhost:3000",
 			"type": "string"
