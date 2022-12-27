@@ -386,18 +386,6 @@
 				"url": "http://localhost:3000/ResetPassword/63a9b35748b78ccec222a683/fd9100eebd2a0848a9c13de87d8dbf1a3cd7ac973bf23042d42638c3e556f1c0"
 			},
 			"response": []
-		},
-		{
-			"name": "New Request",
-			"id": "2e45ad3b-58d7-4688-b208-e69d04ca18e4",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
 		}
 	],
 	"auth": {
@@ -430,13 +418,13 @@
 	],
 	"variable": [
 		{
-			"id": "718c5836-f0f1-48d4-a24c-a3971290b3ef",
+			"id": "901a2878-53a5-490c-a69a-c55e27d1f1b0",
 			"key": "bearer-token",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "19e55cd2-a7b9-47b5-ae01-f131255ff386",
+			"id": "d9b98e93-9de0-4eae-9f14-d7f09338fb59",
 			"key": "localBasedUrl",
 			"value": "http://localhost:3000",
 			"type": "string"
