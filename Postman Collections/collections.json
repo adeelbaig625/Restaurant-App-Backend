@@ -7,7 +7,7 @@
 	"item": [
 		{
 			"name": "Admin Signup",
-			"_postman_id": "9c2f5add-633e-4cc6-9105-8c97500cf3a3",
+			"id": "9c2f5add-633e-4cc6-9105-8c97500cf3a3",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -29,7 +29,7 @@
 		},
 		{
 			"name": "Add Product",
-			"_postman_id": "bef9d9d4-3b4b-4779-9320-3a317a0b985d",
+			"id": "bef9d9d4-3b4b-4779-9320-3a317a0b985d",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -57,7 +57,7 @@
 		},
 		{
 			"name": "Admin Login",
-			"_postman_id": "35401ae2-3974-4e6a-b3d3-aedb0d1e4018",
+			"id": "35401ae2-3974-4e6a-b3d3-aedb0d1e4018",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -79,7 +79,7 @@
 		},
 		{
 			"name": "Admin Update",
-			"_postman_id": "87e88473-28c8-4404-b3b8-d4bc172b4ae8",
+			"id": "87e88473-28c8-4404-b3b8-d4bc172b4ae8",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -107,7 +107,7 @@
 		},
 		{
 			"name": "Update Password",
-			"_postman_id": "5d172ae3-4564-44bc-a481-c4ac2bfd5877",
+			"id": "5d172ae3-4564-44bc-a481-c4ac2bfd5877",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -135,7 +135,7 @@
 		},
 		{
 			"name": "User Signup",
-			"_postman_id": "1f0d4cd6-6de5-48c8-b1ce-f2a8b9b446d5",
+			"id": "1f0d4cd6-6de5-48c8-b1ce-f2a8b9b446d5",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -157,7 +157,7 @@
 		},
 		{
 			"name": "Update Product",
-			"_postman_id": "d9a06d81-5cf4-4307-8385-bf74ca25864a",
+			"id": "d9a06d81-5cf4-4307-8385-bf74ca25864a",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -204,14 +204,13 @@
 							"const responseJson = pm.response.json();",
 							"console.log(responseJson.userToken)",
 							"var bodyToken = responseJson.userToken;",
-							"",
 							"pm.collectionVariables.set(\"bearer-token\",bodyToken);"
 						],
 						"type": "text/javascript"
 					}
 				}
 			],
-			"_postman_id": "b6789a6b-7adc-44c8-b631-6066c35596d3",
+			"id": "b6789a6b-7adc-44c8-b631-6066c35596d3",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -233,7 +232,7 @@
 		},
 		{
 			"name": "AddtoCart",
-			"_postman_id": "ebbd51be-5be1-4851-b5e2-9683002a99c5",
+			"id": "ebbd51be-5be1-4851-b5e2-9683002a99c5",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -261,7 +260,7 @@
 		},
 		{
 			"name": "Get Cart",
-			"_postman_id": "9d480771-98a6-4891-a47e-d5fe9b3355cf",
+			"id": "9d480771-98a6-4891-a47e-d5fe9b3355cf",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -280,7 +279,7 @@
 		},
 		{
 			"name": "EmptyCart",
-			"_postman_id": "2d187730-5872-47c9-92e7-2e0014065a2a",
+			"id": "2d187730-5872-47c9-92e7-2e0014065a2a",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -299,7 +298,7 @@
 		},
 		{
 			"name": "Add Order",
-			"_postman_id": "5a5f8755-459e-4fb7-a37e-100ea89c5887",
+			"id": "5a5f8755-459e-4fb7-a37e-100ea89c5887",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -327,7 +326,7 @@
 		},
 		{
 			"name": "Update User Password",
-			"_postman_id": "e77e1fcd-0d65-4230-a6c4-0669d7aee724",
+			"id": "e77e1fcd-0d65-4230-a6c4-0669d7aee724",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -355,7 +354,7 @@
 		},
 		{
 			"name": "Send Reset Password Email",
-			"_postman_id": "e001ad24-ec16-4acc-b488-10a019c1e812",
+			"id": "e001ad24-ec16-4acc-b488-10a019c1e812",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -368,7 +367,7 @@
 		},
 		{
 			"name": "ResetPassword",
-			"_postman_id": "c890d6fd-0329-43f2-99e0-071f8d581a37",
+			"id": "c890d6fd-0329-43f2-99e0-071f8d581a37",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -419,13 +418,13 @@
 	],
 	"variable": [
 		{
-			"id": "7c43df24-d694-46bd-aa2e-5be883859fd0",
+			"id": "70d3e2a8-d06d-436d-bc89-3e141f287172",
 			"key": "bearer-token",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "d7dbd46d-64de-443f-9193-45514b2e3b4d",
+			"id": "e314cced-3cc3-4dd5-8d8d-b2ceb182c25c",
 			"key": "localBasedUrl",
 			"value": "http://localhost:3000",
 			"type": "string"
