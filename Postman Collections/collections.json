@@ -1,0 +1,434 @@
+{
+	"info": {
+		"_postman_id": "4bc71a71-a439-4672-970a-2f14c6f47915",
+		"name": "Restaurant Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Admin Signup",
+			"_postman_id": "9c2f5add-633e-4cc6-9105-8c97500cf3a3",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"Mirza Adeel Baig\",\r\n\"email\":\"adeelbaig625@gmail.com\",\r\n\"password\":\"abcd123\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/Admin/Signup"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Product",
+			"_postman_id": "bef9d9d4-3b4b-4779-9320-3a317a0b985d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzOTM1ZmQyZjZmMGM5ODgzODAyMDU3MCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY3MDYwNDU3NCwiZXhwIjoxNjcxMDM2NTc0fQ.SeUOytetCHNnaMltGLFy5wYGYfdeAOXFQ6kvWmhLoKc"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"Ranch Pizza\",\n    \"price\":[15.9,19.9,24.9],\n    \"description\":\"Ranch Pizza with mushrooms and chicken topped with olive and white sauce\",\n    \"image\":\"https://www.facebook.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/Admin/AddProduct"
+			},
+			"response": []
+		},
+		{
+			"name": "Admin Login",
+			"_postman_id": "35401ae2-3974-4e6a-b3d3-aedb0d1e4018",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"adeelbaig625@gmail.com\",\n\"password\":\"abcd123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/Admin/Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Admin Update",
+			"_postman_id": "87e88473-28c8-4404-b3b8-d4bc172b4ae8",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzOTM1ZmQyZjZmMGM5ODgzODAyMDU3MCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY3MDY1MjE4MCwiZXhwIjoxNjcxMDg0MTgwfQ.yRf4oprD01V74cbOijTrnYUDr96Re37K8YZ4P2jYVyA"
+					}
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"mirzaa adeel\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/Admin/Update"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Password",
+			"_postman_id": "5d172ae3-4564-44bc-a481-c4ac2bfd5877",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzOTM1ZmQyZjZmMGM5ODgzODAyMDU3MCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY3MDYwNDU3NCwiZXhwIjoxNjcxMDM2NTc0fQ.SeUOytetCHNnaMltGLFy5wYGYfdeAOXFQ6kvWmhLoKc"
+					}
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"oldPassword\":\"adeel123\",\n    \"newPassword\":\"adeel1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/Admin/UpdatePassword"
+			},
+			"response": []
+		},
+		{
+			"name": "User Signup",
+			"_postman_id": "1f0d4cd6-6de5-48c8-b1ce-f2a8b9b446d5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"Aimen aisha\",\n    \"email\":\"aimen.ayesha14@gmail.com\",\n    \"password\":\"aimen123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/Signup"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Product",
+			"_postman_id": "d9a06d81-5cf4-4307-8385-bf74ca25864a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzOTM1ZmQyZjZmMGM5ODgzODAyMDU3MCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY3MDYwNDU3NCwiZXhwIjoxNjcxMDM2NTc0fQ.SeUOytetCHNnaMltGLFy5wYGYfdeAOXFQ6kvWmhLoKc"
+					}
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/Admin/UpdateProduct/6393678ab35b139787c838dc"
+			},
+			"response": []
+		},
+		{
+			"name": "UserLogin",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "b6b4e11c-79f9-4ee3-8500-11696ed24e75",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "78f63855-7687-473a-92a0-bed6f8026a43",
+						"exec": [
+							"const responseJson = pm.response.json();",
+							"console.log(responseJson.userToken)",
+							"var bodyToken = responseJson.userToken;",
+							"",
+							"pm.collectionVariables.set(\"bearer-token\",bodyToken);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "b6789a6b-7adc-44c8-b631-6066c35596d3",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"email\":\"m.ahmedanis99@gmail.com\",\n    \"password\":\"Ahmed1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{localBasedUrl}}/Login"
+			},
+			"response": []
+		},
+		{
+			"name": "AddtoCart",
+			"_postman_id": "ebbd51be-5be1-4851-b5e2-9683002a99c5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzOTc1YzIwZGVkOGIyMjQ2OWYyZmY2NSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2NzE0NzY3MjAsImV4cCI6MTY3MTkwODcyMH0.uUlgkZKYW9o6n7CsORzrgZzG3HQRSkwOjsfxdlY78BA"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"productId\":\"6393678ab35b139787c838dc\",\n    \"quantity\":1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/AddToCart"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Cart",
+			"_postman_id": "9d480771-98a6-4891-a47e-d5fe9b3355cf",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzOTc1YzIwZGVkOGIyMjQ2OWYyZmY2NSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2NzE0NzY3MjAsImV4cCI6MTY3MTkwODcyMH0.uUlgkZKYW9o6n7CsORzrgZzG3HQRSkwOjsfxdlY78BA"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3000/cart"
+			},
+			"response": []
+		},
+		{
+			"name": "EmptyCart",
+			"_postman_id": "2d187730-5872-47c9-92e7-2e0014065a2a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzOTc1YzIwZGVkOGIyMjQ2OWYyZmY2NSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2NzA4NjM5MTIsImV4cCI6MTY3MTI5NTkxMn0.fEu1yM8OudwVzH01ziqhOgzKSM5lS2WZSsGfY-6NXUM"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"url": "http://localhost:3000/emptyCart"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Order",
+			"_postman_id": "5a5f8755-459e-4fb7-a37e-100ea89c5887",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzOTc1YzIwZGVkOGIyMjQ2OWYyZmY2NSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2NzE0NzY3MjAsImV4cCI6MTY3MTkwODcyMH0.uUlgkZKYW9o6n7CsORzrgZzG3HQRSkwOjsfxdlY78BA"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cartId\":\"63975f061b27a1ef9891dab0\",\n    \"name\":\"Mirza Adeel Baig\",\n    \"address\":\"R-510 Sector14-A\",\n    \"deliveryCharges\":200\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/addOrder"
+			},
+			"response": []
+		},
+		{
+			"name": "Update User Password",
+			"_postman_id": "e77e1fcd-0d65-4230-a6c4-0669d7aee724",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzOTc1YzIwZGVkOGIyMjQ2OWYyZmY2NSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2NzE4MjU2NTYsImV4cCI6MTY3MjI1NzY1Nn0.cquUVZ28VzYy6KXYInuoNaLpuf5LOuLkCexyMPnzqSo"
+					}
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"oldPassword\":\"adeel123\",\n    \"newPassword\":\"adeel12\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/UpdatePassword"
+			},
+			"response": []
+		},
+		{
+			"name": "Send Reset Password Email",
+			"_postman_id": "e001ad24-ec16-4acc-b488-10a019c1e812",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": "http://localhost:3000/ResetPasswordEmail"
+			},
+			"response": []
+		},
+		{
+			"name": "ResetPassword",
+			"_postman_id": "c890d6fd-0329-43f2-99e0-071f8d581a37",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"password\":\"Ahmed1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/ResetPassword/63a9b35748b78ccec222a683/fd9100eebd2a0848a9c13de87d8dbf1a3cd7ac973bf23042d42638c3e556f1c0"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": {
+			"token": "{{bearer-token}}"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "7368ee79-f16c-4056-974e-985f62907979",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "93201a19-bf3b-47a2-88e5-b3745401eb20",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "7c43df24-d694-46bd-aa2e-5be883859fd0",
+			"key": "bearer-token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "d7dbd46d-64de-443f-9193-45514b2e3b4d",
+			"key": "localBasedUrl",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}
