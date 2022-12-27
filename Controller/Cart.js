@@ -1,6 +1,6 @@
 const Cart = require("../Model/Cart");
 const Product = require("../Model/Product");
-const AppError = require("../AppError");
+const AppError = require("../utils/AppError");
 
 class CartController {
   cart = async (uid) => {

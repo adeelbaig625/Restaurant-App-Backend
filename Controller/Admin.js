@@ -1,5 +1,5 @@
 const Admin = require("../Model/Admin");
-const AppError = require("../AppError");
+const AppError = require("../utils/AppError");
 const Product = require("../Model/Product");
 class AdminController {
   signup = async (req, res, next) => {

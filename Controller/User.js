@@ -1,5 +1,5 @@
 const User = require("../Model/User");
-const AppError = require("../AppError");
+const AppError = require("../utils/AppError");
 const { sendEmail } = require("../utils/sendEmail");
 const crypto = require("crypto");
 const Token = require("../Model/Token");
@@ -109,7 +109,6 @@ class UserController {
       if (!user) {
         return next(AppError.unauthorized("User not found"));
       }
-      console.log(userId, token);
       const resetToken = await Token.findOne({ token });
       if (!resetToken) {
         return next(AppError.unauthorized("Token not found"));

@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const connectDB = require("./connectDb");
+const connectDB = require("./utils/connectDb");
 const passport = require("passport");
 const cors = require("cors");
 

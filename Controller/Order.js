@@ -1,5 +1,5 @@
 const Order = require("../Model/Order");
-const AppError = require("../AppError");
+const AppError = require("../utils/AppError");
 const Cart = require("../Model/Cart");
 const Product = require("../Model/Product");
 const User = require("../Model/User");
